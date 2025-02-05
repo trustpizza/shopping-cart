@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Homepage Component > Matches the snapshot 1`] = `
+<DocumentFragment>
+    
+  <div>
+    <h1>
+      Bananazon!
+    </h1>
+    <a
+      data-discover="true"
+      href="/shop"
+    >
+      Start Shopping
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Homepage Component > Renders Correct Heading 1`] = `undefined`;
+
+exports[`Homepage Component > matches the snapshot 1`] = `
+<DocumentFragment>
+    
+  <div>
+    <h1>
+      Bananazon!
+    </h1>
+    <a
+      data-discover="true"
+      href="/shop"
+    >
+      Start Shopping
+    </a>
+  </div>
+</DocumentFragment>
+`;
