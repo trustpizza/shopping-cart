@@ -7,7 +7,6 @@ const Homepage = () => {
     <>
     <div>
       <h1>Bananazon!</h1>
-      <Link to="/shop">Start Shopping</Link>
     </div>
     </>
   )

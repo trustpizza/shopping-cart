@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProductCard Component > snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h5>
+      Sample Product
+    </h5>
+    <img
+      alt="Sample Product"
+      src="https://via.placeholder.com/150"
+    />
+    <span>
+      Price: $19.99
+    </span>
+    <input
+      aria-label="Quantity"
+      min="1"
+      type="number"
+      value="1"
+    />
+    <button
+      type="submit"
+    >
+      Add to Cart
+    </button>
+  </div>
+</DocumentFragment>
+`;

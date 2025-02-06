@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Shop Component > matches the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      Bananas for Sale
+    </h1>
+  </div>
+</DocumentFragment>
+`;

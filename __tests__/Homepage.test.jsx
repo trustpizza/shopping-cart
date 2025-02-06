@@ -28,7 +28,4 @@ describe("Homepage Component", () => {
     expect(heading.textContent).toMatch(/Bananazon!/i)
   });
 
-  it("", () => {
-
-  });
 })
