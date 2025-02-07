@@ -26,6 +26,7 @@ const ProductCard = ({ title, image, price, onClick }) => {
         type="button"
         onClick={() => onClick(quantity)}
         className="btn btn-primary w-full"
+        data-testid="add-to-cart"
       >
         Add to Cart
       </button>

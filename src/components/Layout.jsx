@@ -3,16 +3,34 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 import useProducts from "../services/useProducts";
 
+
 const Layout = () => {
   const { products, error, loading } = useProducts();
   const [cart, setCart] = useState([]);
 
+  const addToCart = (product, quantity) => {
+    setCart((prevCart) => {
+      // Check if product is already in cart
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        // Update quantity if product exists
+        return prevCart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
+        );
+      } else {
+        // Add new product to cart
+        return [...prevCart, { ...product, quantity }];
+      }
+  })};
+
+  const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <>
       <div className="min-h-screen flex flex-col bg-base-200">
-        <Navbar cartCount={cart.length} />
+        <Navbar cartCount={totalItemsInCart} />
         <main className="flex-grow container mx-auto p-4">
-          <Outlet />
+          <Outlet context={{ cart, addToCart, products, error, loading }} />
         </main>
       </div>
     </>
