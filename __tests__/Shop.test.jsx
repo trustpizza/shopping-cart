@@ -3,7 +3,6 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { act } from "react";
 import Shop from "../src/pages/Shop";
-import useProducts from "../src/services/useProducts";
 
 // Mock useProducts to prevent the timeout delay
 vi.mock("../useProducts", () => ({
@@ -22,16 +21,25 @@ describe("Shop Component", () => {
   });
 
   it("displays 'Bananas for Sale' after products load", async () => {
-    // First mock: Loading state
-    <MemoryRouter initialEntries={["/shop"]}>
-      <Shop />
-    </MemoryRouter>
-    const heading = await screen.findByRole("heading");
+    vi.useFakeTimers();
+    
+    // Act block because fake timers
+    act(() => {
+      render(
+        <MemoryRouter initialEntries={["/shop"]}>
+          <Shop />
+        </MemoryRouter>
+      )
+    })
 
+    const heading = screen.getByRole("heading");
     expect(heading).toBeInTheDocument();
-    // expect(screen.getByRole("heading")).toBeInTheDocument();
-    // expect(screen.getByRole("heading")).toHaveTextContent("Bananas for Sale")
-  });
+    expect(screen.getByText("Loading products ...")).toBeInTheDocument();
 
-  it("")
+    act(() => {
+      vi.runAllTimers();
+    })
+
+    expect(screen.queryByText("Loading products ...")).not.toBeInTheDocument();
+  });
 });

@@ -1,8 +1,7 @@
-import { render, screen, waitFor, act } from '@testing-library/react'; // Import act
-import { useEffect, useState, useRef } from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen, act } from '@testing-library/react'; // Import act
+import { useEffect } from 'react';
+import { vi } from 'vitest';
 import useProducts from '../src/services/useProducts';
-import { vi } from 'vitest';  
 
 describe("useProducts", () => {
   it("should display loading initially and then an error message", async () => {

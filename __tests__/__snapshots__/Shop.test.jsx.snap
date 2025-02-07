@@ -16,7 +16,7 @@ exports[`Shop Component > matches the snapshot 1`] = `
       <div
         class="text-xl text-center col-span-full"
       >
-        Loading products...
+        Loading products ...
       </div>
     </div>
   </div>
