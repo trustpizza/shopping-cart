@@ -72,21 +72,7 @@ describe("Shop Component", () => {
       vi.runAllTimers();
     });
 
-    const addToCartButtons = screen.getAllByTestId('add-to-cart');
-
     const cartCount = screen.getByTestId("cart");
     expect(cartCount).toHaveTextContent("0");
-
-    // for (let i = 0; i < addToCartButtons.length; i++) {
-    //   await act(async () => { // Wrap in act and make async
-    //     await user.click(addToCartButtons[i]);
-    //     // No expect here yet
-    //   });
-    
-    //   // Now, after the act block, the state should be updated
-    //   await waitFor(() => { // Wait for the cartCount to update
-    //     expect(cartCount).toHaveTextContent(`${i + 1}`);
-    //   });
-    // }
   });
 });

@@ -1,28 +1,34 @@
-  import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-  const useProducts = () => {
-    const [products, setProducts] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [ctr, setCtr] = useState(0);
+const useProducts = () => {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-      setTimeout(() => {
-        try {
-          setProducts([
-            { id: 1, title: "Banana", price: 1.99, image: "https://via.placeholder.com/150" },
-            { id: 2, title: "Apple", price: 0.99, image: "https://via.placeholder.com/150" }
-          ]);
-          setLoading(false);
-        } catch (err) {
-          setError("Failed to load products");
-          setLoading(false);
-        }
-        setCtr(1);
-      }, 1000);
-    }, []);
-  
-    return { products, error, loading, ctr };
-  };
+  useEffect(() => {
+    setTimeout(() => {
+      fetch('https://fakestoreapi.com/products?limit=10')
+        .then((response) => {
+          if (response.status >= 400) {
+            throw new Error("Server error");
+          }
+          return response.json();
+        })
+        .then((response) => {
+          const transformedProducts = response.map((product) => ({
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            image: product.image,
+          }));
+          setProducts(transformedProducts);
+        })
+        .catch((error) => setError(error))
+        .finally(() => setLoading(false));
+    }, 1000);
+  }, []);
 
-  export default useProducts;
+  return { products, error, loading };
+};
+
+export default useProducts;

@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 import useProducts from "../services/useProducts";
 
-
 const Layout = () => {
   const { products, error, loading } = useProducts();
   const [cart, setCart] = useState([]);
@@ -21,15 +20,19 @@ const Layout = () => {
         // Add new product to cart
         return [...prevCart, { ...product, quantity }];
       }
-  })};
+    });
+  };
 
   const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+
+  const totalPriceInCart = cart.reduce((total, item) => total + item.quantity * item.price, 0);
 
   return (
     <>
       <div className="min-h-screen flex flex-col bg-base-200">
-        <Navbar cartCount={totalItemsInCart} />
+        <Navbar cartCount={totalItemsInCart} totalPrice={totalPriceInCart.toFixed(2)} />
         <main className="flex-grow container mx-auto p-4">
+          {/* Display the total price of items in the cart */}
           <Outlet context={{ cart, addToCart, products, error, loading }} />
         </main>
       </div>

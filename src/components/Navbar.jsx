@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Navbar = ({ cartCount = 0 }) => {
+const Navbar = ({ cartCount = 0, totalPrice = 0 }) => {
   return (
     <nav className="navbar bg-base-100 shadow-md p-4">
       <div className="flex-1">
@@ -19,6 +19,10 @@ const Navbar = ({ cartCount = 0 }) => {
             🛒
           </div>
         </div>
+        {/* Display the total price */}
+        <div className="ml-4 text-lg font-semibold">
+          ${totalPrice}
+        </div>
       </div>
     </nav>
   );
@@ -26,6 +30,7 @@ const Navbar = ({ cartCount = 0 }) => {
 
 Navbar.propTypes = {
   cartCount: PropTypes.number, // Ensures cartCount is a number
+  totalPrice: PropTypes.number, // Ensures totalPrice is a number
 };
 
 export default Navbar;

@@ -44,6 +44,11 @@ exports[`Shop Component > matches the snapshot 1`] = `
             🛒
           </div>
         </div>
+        <div
+          class="ml-4 text-lg font-semibold"
+        >
+          $0.00
+        </div>
       </div>
     </nav>
     <main
