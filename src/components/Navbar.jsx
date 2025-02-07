@@ -3,17 +3,22 @@ import PropTypes from "prop-types";
 
 const Navbar = ({ cartCount = 0 }) => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/shop">Store</Link>
-        </li>
-      </ul>
-      <div data-testid="cart">
-        {cartCount}
+    <nav className="navbar bg-base-100 shadow-md p-4">
+      <div className="flex-1">
+        <Link to="/" className="btn btn-ghost text-xl">
+          Home
+        </Link>
+        <Link to="/shop" className="btn btn-ghost text-xl ml-4">
+          Store
+        </Link>
+      </div>
+      <div className="flex-none">
+        <div className="indicator">
+          <span data-testid="cart" className="indicator-item badge badge-secondary">{cartCount}</span>
+          <div className="btn btn-square btn-ghost">
+            🛒
+          </div>
+        </div>
       </div>
     </nav>
   );

@@ -3,10 +3,19 @@
 exports[`Homepage Component > matches the snapshot 1`] = `
 <DocumentFragment>
     
-  <div>
-    <h1>
-      Bananazon!
-    </h1>
+  <div
+    class="flex grow justify-center items-center bg-base-200"
+  >
+    <img
+      alt="Bananazon!"
+      class="block dark:hidden w-48 md:w-96"
+      src="/src/assets/logo-black.png"
+    />
+    <img
+      alt="Bananazon!"
+      class="hidden dark:block w-48 md:w-96"
+      src="/src/assets/logo-white.png"
+    />
   </div>
 </DocumentFragment>
 `;

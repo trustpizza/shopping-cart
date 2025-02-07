@@ -2,29 +2,45 @@
 
 exports[`Navbar Component > matches snapshot 1`] = `
 <DocumentFragment>
-  <nav>
-    <ul>
-      <li>
-        <a
-          data-discover="true"
-          href="/"
-        >
-          Home
-        </a>
-      </li>
-      <li>
-        <a
-          data-discover="true"
-          href="/shop"
-        >
-          Store
-        </a>
-      </li>
-    </ul>
+  <nav
+    class="navbar bg-base-100 shadow-md p-4"
+  >
     <div
-      data-testid="cart"
+      class="flex-1"
     >
-      0
+      <a
+        class="btn btn-ghost text-xl"
+        data-discover="true"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        class="btn btn-ghost text-xl ml-4"
+        data-discover="true"
+        href="/shop"
+      >
+        Store
+      </a>
+    </div>
+    <div
+      class="flex-none"
+    >
+      <div
+        class="indicator"
+      >
+        <span
+          class="indicator-item badge badge-secondary"
+          data-testid="cart"
+        >
+          0
+        </span>
+        <div
+          class="btn btn-square btn-ghost"
+        >
+          🛒
+        </div>
+      </div>
     </div>
   </nav>
 </DocumentFragment>

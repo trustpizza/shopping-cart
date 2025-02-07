@@ -9,14 +9,14 @@ const Layout = () => {
 
   return (
     <>
-    <div>
-      <Navbar cartCount={cart.length} />
-      <main>
-        <Outlet />
-      </main>
-    </div>
+      <div className="min-h-screen flex flex-col bg-base-200">
+        <Navbar cartCount={cart.length} />
+        <main className="flex-grow container mx-auto p-4">
+          <Outlet />
+        </main>
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default Layout;

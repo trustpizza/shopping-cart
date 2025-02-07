@@ -19,6 +19,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: "*",
+    element: <Error404 />
+  }
 ];
 
 export default routes;

@@ -4,7 +4,8 @@
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-  
+    const [ctr, setCtr] = useState(0);
+
     useEffect(() => {
       setTimeout(() => {
         try {
@@ -17,10 +18,11 @@
           setError("Failed to load products");
           setLoading(false);
         }
+        setCtr(1);
       }, 1000);
     }, []);
   
-    return { products, error, loading };
+    return { products, error, loading, ctr };
   };
 
   export default useProducts;

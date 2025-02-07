@@ -17,15 +17,26 @@ describe("Homepage Component", () => {
     expect(asFragment()).toMatchSnapshot();
   });
   
-  it("renders correct heading", () => {
+  it("renders all images with correct alt attributes", () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <Homepage />
       </MemoryRouter>
-    )
-      
-    const heading = screen.getByRole("heading")
-    expect(heading.textContent).toMatch(/Bananazon!/i)
-  });
+    );
 
+    // Define expected images and their corresponding alt texts
+    const expectedImages = [
+      { alt: "Bananazon!", src: "src/assets/logo-black.png" },
+      { alt: "Bananazon!", src: "src/assets/logo-white.png" },
+    ];
+
+    const images = screen.getAllByRole("img");
+
+    expect(images.length).toBe(expectedImages.length);
+
+    images.forEach((img, index) => {
+      expect(img).toHaveAttribute("alt", expectedImages[index].alt);
+      expect(img).toHaveAttribute("src", expect.stringContaining(expectedImages[index].src));
+    });
+  });
 })
